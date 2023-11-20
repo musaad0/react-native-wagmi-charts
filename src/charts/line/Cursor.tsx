@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { StyleSheet } from 'react-native';
+import { I18nManager, StyleSheet } from 'react-native';
 import {
   GestureEvent,
   LongPressGestureHandler,
@@ -134,7 +134,12 @@ export function LineChartCursor({
         shouldCancelWhenOutside={false}
         {...props}
       >
-        <Animated.View style={StyleSheet.absoluteFill}>
+        <Animated.View
+          style={[
+            StyleSheet.absoluteFill,
+            { flexDirection: I18nManager.isRTL ? 'row-reverse' : 'row' },
+          ]}
+        >
           {children}
         </Animated.View>
       </LongPressGestureHandler>
